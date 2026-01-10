@@ -1,0 +1,32 @@
+---
+const currentYear = new Date().getFullYear();
+
+const footerLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/diy-guide', label: 'DIY Guide' },
+  { href: '/app', label: 'App' },
+  { href: '/get-one', label: 'Get One' },
+  { href: '/privacy', label: 'Privacy Policy' },
+];
+---
+
+<footer class="bg-gray-50 border-t border-gray-100">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+      <!-- Logo & Copyright -->
+      <div class="text-center md:text-left">
+        <span class="text-xl font-bold text-primary">GasTag</span>
+        <p class="text-sm text-gray-500 mt-1">&copy; {currentYear} GasTag. All rights reserved.</p>
+      </div>
+
+      <!-- Links -->
+      <div class="flex flex-wrap justify-center gap-6">
+        {footerLinks.map((link) => (
+          <a href={link.href} class="text-sm text-gray-600 hover:text-primary transition-colors">
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</footer>
