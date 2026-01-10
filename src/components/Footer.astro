@@ -1,12 +1,13 @@
 ---
 const currentYear = new Date().getFullYear();
+const base = import.meta.env.BASE_URL;
 
 const footerLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/diy-guide', label: 'DIY Guide' },
-  { href: '/app', label: 'App' },
-  { href: '/get-one', label: 'Get One' },
-  { href: '/privacy', label: 'Privacy Policy' },
+  { href: `${base}`, label: 'Home' },
+  { href: `${base}diy-guide`, label: 'DIY Guide' },
+  { href: `${base}app`, label: 'App' },
+  { href: `${base}get-one`, label: 'Get One' },
+  { href: `${base}privacy`, label: 'Privacy Policy' },
 ];
 ---
 

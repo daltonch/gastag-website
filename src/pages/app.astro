@@ -5,6 +5,8 @@ import Footer from '../components/Footer.astro';
 import FeatureCard from '../components/FeatureCard.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 
+const base = import.meta.env.BASE_URL;
+
 const features = [
   { title: 'Live Gas Readings', description: 'See Helium, Oxygen, temperature, and pressure in real-time as you analyze.', icon: '📊' },
   { title: 'MOD Calculation', description: 'Automatic Maximum Operating Depth calculation at 1.6 PPO₂.', icon: '🎯' },
@@ -56,7 +58,7 @@ const printerSteps = [
 
           <div class="flex justify-center">
             <img
-              src="/images/screenshot.jpg"
+              src={`${base}images/screenshot.jpg`}
               alt="GasTag app screenshot"
               class="w-72 rounded-3xl shadow-2xl"
             />

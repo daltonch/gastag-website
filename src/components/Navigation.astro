@@ -1,9 +1,11 @@
 ---
+const base = import.meta.env.BASE_URL;
+
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/diy-guide', label: 'DIY Guide' },
-  { href: '/app', label: 'App' },
-  { href: '/get-one', label: 'Get One' },
+  { href: `${base}`, label: 'Home' },
+  { href: `${base}diy-guide`, label: 'DIY Guide' },
+  { href: `${base}app`, label: 'App' },
+  { href: `${base}get-one`, label: 'Get One' },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -13,7 +15,7 @@ const currentPath = Astro.url.pathname;
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <!-- Logo -->
-      <a href="/" class="text-xl font-bold text-primary">GasTag</a>
+      <a href={base} class="text-xl font-bold text-primary">GasTag</a>
 
       <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center gap-8">
@@ -32,7 +34,7 @@ const currentPath = Astro.url.pathname;
 
       <!-- CTA Button -->
       <a
-        href="/app"
+        href={`${base}app`}
         class="hidden md:inline-flex items-center px-4 py-2 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary/90 transition-colors"
       >
         Get the App
@@ -66,7 +68,7 @@ const currentPath = Astro.url.pathname;
         </a>
       ))}
       <a
-        href="/app"
+        href={`${base}app`}
         class="block w-full text-center px-4 py-2 bg-primary text-white text-sm font-medium rounded-lg mt-4"
       >
         Get the App

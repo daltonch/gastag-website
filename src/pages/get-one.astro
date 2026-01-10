@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 import Button from '../components/Button.astro';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="Get One" description="Join the waitlist for a pre-built GasTag bridge.">
@@ -79,7 +81,7 @@ import Button from '../components/Button.astro';
 
         <div class="mt-12 pt-8 border-t border-gray-100">
           <p class="text-gray-600 mb-4">Prefer to build your own?</p>
-          <Button href="/diy-guide" variant="outline">View DIY Guide</Button>
+          <Button href={`${base}diy-guide`} variant="outline">View DIY Guide</Button>
         </div>
       </div>
     </section>

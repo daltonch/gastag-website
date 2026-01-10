@@ -6,6 +6,8 @@ import Button from '../components/Button.astro';
 import FeatureCard from '../components/FeatureCard.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 
+const base = import.meta.env.BASE_URL;
+
 const steps = [
   { number: '1', title: 'Connect', description: 'ESP32 bridge plugs into your DiveSoft Analyzer\'s USB port', icon: '🔌' },
   { number: '2', title: 'Pair', description: 'iPhone connects to the bridge via Bluetooth', icon: '📱' },
@@ -56,15 +58,15 @@ const requirements = [
             </div>
 
             <div class="flex flex-wrap gap-4">
-              <Button href="/diy-guide" variant="primary">Build Your Own</Button>
-              <Button href="/get-one" variant="outline">Get Pre-Built</Button>
-              <Button href="/app" variant="secondary">Download App</Button>
+              <Button href={`${base}diy-guide`} variant="primary">Build Your Own</Button>
+              <Button href={`${base}get-one`} variant="outline">Get Pre-Built</Button>
+              <Button href={`${base}app`} variant="secondary">Download App</Button>
             </div>
           </div>
 
           <div class="flex justify-center lg:justify-end">
             <img
-              src="/images/screenshot.jpg"
+              src={`${base}images/screenshot.jpg`}
               alt="GasTag app showing gas readings and label preview"
               class="w-72 rounded-3xl shadow-2xl"
             />
@@ -155,14 +157,14 @@ const requirements = [
             <div class="text-4xl mb-4">🔧</div>
             <h3 class="text-xl font-semibold text-gray-900 mb-2">DIY Builder</h3>
             <p class="text-gray-600 mb-6">Build your own GasTag bridge for about $25 in parts.</p>
-            <Button href="/diy-guide" variant="primary" class="w-full">View DIY Guide</Button>
+            <Button href={`${base}diy-guide`} variant="primary" class="w-full">View DIY Guide</Button>
           </div>
 
           <div class="bg-white rounded-xl p-8 shadow-sm border border-gray-100 text-center">
             <div class="text-4xl mb-4">📦</div>
             <h3 class="text-xl font-semibold text-gray-900 mb-2">Pre-Built</h3>
             <p class="text-gray-600 mb-6">Join the waitlist for a ready-to-use GasTag bridge.</p>
-            <Button href="/get-one" variant="outline" class="w-full">Join Waitlist</Button>
+            <Button href={`${base}get-one`} variant="outline" class="w-full">Join Waitlist</Button>
           </div>
         </div>
       </div>

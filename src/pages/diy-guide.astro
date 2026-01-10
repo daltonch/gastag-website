@@ -4,6 +4,8 @@ import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 
+const base = import.meta.env.BASE_URL;
+
 const parts = [
   { name: 'YD-ESP32-S3 (N8R2 or N16R8)', price: '~$10', link: 'https://www.amazon.com/DORHEA-Development-Bluetooth-ESP32-S3-DevKit-ESP32-S3-WROOM/dp/B0CWGJN1GQ', note: '2-pack available' },
   { name: 'USB-C to USB-A OTG adapter', price: '~$5', link: 'https://www.amazon.com/gp/product/B07BS8SRWH', note: 'JSAUX 2-pack' },
@@ -140,7 +142,7 @@ const troubleshooting = [
 
         <div class="mt-8">
           <img
-            src="/images/label_hardware.jpg"
+            src={`${base}images/label_hardware.jpg`}
             alt="GasTag hardware setup"
             class="rounded-xl shadow-lg max-w-full"
           />
