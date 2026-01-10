@@ -1,0 +1,173 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import Button from '../components/Button.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+const steps = [
+  { number: '1', title: 'Connect', description: 'ESP32 bridge plugs into your DiveSoft Analyzer\'s USB port', icon: '🔌' },
+  { number: '2', title: 'Pair', description: 'iPhone connects to the bridge via Bluetooth', icon: '📱' },
+  { number: '3', title: 'Read', description: 'Live He, O₂, temperature, and pressure readings on your phone', icon: '📊' },
+  { number: '4', title: 'Print', description: 'Print a tank label directly to your Brother QL-820NWB via Bluetooth', icon: '🏷️' },
+];
+
+const features = [
+  { title: 'Print tank labels', description: 'One tap to print gas mix labels for your tanks with MOD calculations.', icon: '🏷️' },
+  { title: 'Real-time readings', description: 'See gas mix data instantly on your iPhone as you analyze.', icon: '📊' },
+  { title: 'Fully wireless', description: 'Bluetooth from analyzer to phone to printer. No cables to your phone.', icon: '📡' },
+  { title: 'iPhone powered', description: 'Bridge runs off your iPhone\'s USB-C port. No extra batteries needed.', icon: '🔋' },
+  { title: 'Background mode', description: 'App stays connected while you use other apps on your phone.', icon: '⚡' },
+  { title: 'Auto-reconnect', description: 'Automatically reconnects if the Bluetooth connection drops.', icon: '🔄' },
+];
+
+const requirements = [
+  { item: 'DiveSoft Analyzer H2/O2', note: 'Required — this is what GasTag reads', required: true },
+  { item: 'Brother QL-820NWB label printer + DK-2251 labels', note: 'For printing tank labels', required: false },
+  { item: 'iPhone 15 or later', note: 'Or any iPhone with a USB power bank', required: false },
+  { item: 'GasTag Bridge', note: 'Build it yourself (~$25) or get pre-built', required: false },
+  { item: 'GasTag iOS App', note: 'Available on the App Store', required: false },
+];
+---
+
+<Layout title="Home">
+  <Navigation />
+
+  <main class="pt-16">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-b from-gray-50 to-white py-20 lg:py-28">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              Wireless gas readings on your iPhone
+            </h1>
+            <p class="text-xl text-gray-600 mb-6">
+              Read your DiveSoft Analyzer wirelessly and print professional tank labels in seconds.
+            </p>
+
+            <!-- DiveSoft Requirement Callout -->
+            <div class="bg-warning/10 border border-warning/30 rounded-lg px-4 py-3 mb-8">
+              <p class="text-warning font-medium flex items-center gap-2">
+                <span>⚠️</span>
+                <span>Requires DiveSoft Analyzer H2/O2</span>
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-4">
+              <Button href="/diy-guide" variant="primary">Build Your Own</Button>
+              <Button href="/get-one" variant="outline">Get Pre-Built</Button>
+              <Button href="/app" variant="secondary">Download App</Button>
+            </div>
+          </div>
+
+          <div class="flex justify-center lg:justify-end">
+            <img
+              src="/images/screenshot.jpg"
+              alt="GasTag app showing gas readings and label preview"
+              class="w-72 rounded-3xl shadow-2xl"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-20 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          title="How It Works"
+          subtitle="From analyzer to printed label in four simple steps"
+        />
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {steps.map((step) => (
+            <div class="text-center">
+              <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-3xl">{step.icon}</span>
+              </div>
+              <div class="text-sm font-medium text-primary mb-2">Step {step.number}</div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">{step.title}</h3>
+              <p class="text-gray-600 text-sm">{step.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          title="Features"
+          subtitle="Everything you need for efficient gas analysis workflow"
+        />
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((feature) => (
+            <FeatureCard
+              title={feature.title}
+              description={feature.description}
+              icon={feature.icon}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- What You Need -->
+    <section class="py-20 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          title="What You Need"
+          subtitle="Everything required to get started with GasTag"
+        />
+
+        <div class="max-w-2xl mx-auto">
+          <ul class="space-y-4">
+            {requirements.map((req) => (
+              <li class="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
+                <span class={req.required ? 'text-warning' : 'text-accent'}>
+                  {req.required ? '⚠️' : '✓'}
+                </span>
+                <div>
+                  <span class="font-medium text-gray-900">{req.item}</span>
+                  <span class="text-gray-500 text-sm ml-2">— {req.note}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Choose Your Path -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          title="Choose Your Path"
+          subtitle="Build it yourself or get a ready-to-use unit"
+        />
+
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div class="bg-white rounded-xl p-8 shadow-sm border border-gray-100 text-center">
+            <div class="text-4xl mb-4">🔧</div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">DIY Builder</h3>
+            <p class="text-gray-600 mb-6">Build your own GasTag bridge for about $25 in parts.</p>
+            <Button href="/diy-guide" variant="primary" class="w-full">View DIY Guide</Button>
+          </div>
+
+          <div class="bg-white rounded-xl p-8 shadow-sm border border-gray-100 text-center">
+            <div class="text-4xl mb-4">📦</div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Pre-Built</h3>
+            <p class="text-gray-600 mb-6">Join the waitlist for a ready-to-use GasTag bridge.</p>
+            <Button href="/get-one" variant="outline" class="w-full">Join Waitlist</Button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
