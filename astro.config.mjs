@@ -3,5 +3,6 @@ import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
   integrations: [tailwind()],
-  site: 'https://gastag.app',
+  site: 'https://daltonch.github.io',
+  base: '/gastag-website',
 });
