@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
+const lastUpdated = 'January 10, 2026';
+---
+
+<Layout title="Privacy Policy" description="GasTag privacy policy - we respect your privacy and collect no personal data.">
+  <Navigation />
+
+  <main class="pt-16">
+    <section class="py-16">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Privacy Policy</h1>
+        <p class="text-gray-500 mb-12">Last updated: {lastUpdated}</p>
+
+        <div class="prose prose-gray max-w-none">
+          <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">Overview</h2>
+          <p class="text-gray-600 mb-6">
+            GasTag is designed with your privacy in mind. We do not collect, store, or transmit any personal data or usage analytics. Your gas readings and labels stay on your device.
+          </p>
+
+          <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">Data Collection</h2>
+          <p class="text-gray-600 mb-6">
+            <strong>We collect no data.</strong> The GasTag app does not:
+          </p>
+          <ul class="list-disc list-inside text-gray-600 mb-6 space-y-2">
+            <li>Collect personal information</li>
+            <li>Track your location</li>
+            <li>Use analytics or tracking services</li>
+            <li>Require account creation</li>
+            <li>Send data to any servers</li>
+          </ul>
+
+          <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">Bluetooth Usage</h2>
+          <p class="text-gray-600 mb-6">
+            GasTag uses Bluetooth Low Energy (BLE) to:
+          </p>
+          <ul class="list-disc list-inside text-gray-600 mb-6 space-y-2">
+            <li>Connect to the GasTag Bridge hardware to receive gas readings</li>
+            <li>Connect to your Brother label printer to print tank labels</li>
+          </ul>
+          <p class="text-gray-600 mb-6">
+            Bluetooth connections are made only with devices you explicitly choose to pair with. No data is transmitted over the internet.
+          </p>
+
+          <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">Local Storage</h2>
+          <p class="text-gray-600 mb-6">
+            Gas readings and analysis history are stored locally on your iPhone. This data is not backed up to iCloud and is deleted when you uninstall the app.
+          </p>
+
+          <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">Third-Party Services</h2>
+          <p class="text-gray-600 mb-6">
+            The GasTag app does not integrate with any third-party services, analytics platforms, or advertising networks.
+          </p>
+
+          <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">Children's Privacy</h2>
+          <p class="text-gray-600 mb-6">
+            GasTag does not collect any information from anyone, including children under 13.
+          </p>
+
+          <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">Changes to This Policy</h2>
+          <p class="text-gray-600 mb-6">
+            If we make changes to this privacy policy, we will update the "Last updated" date at the top of this page.
+          </p>
+
+          <h2 class="text-2xl font-semibold text-gray-900 mt-8 mb-4">Contact</h2>
+          <p class="text-gray-600 mb-6">
+            If you have questions about this privacy policy, please contact us at privacy@gastag.app.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
