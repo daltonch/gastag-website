@@ -1,0 +1,169 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+const parts = [
+  { name: 'YD-ESP32-S3 (N8R2 or N16R8)', price: '~$10', link: 'https://www.amazon.com/DORHEA-Development-Bluetooth-ESP32-S3-DevKit-ESP32-S3-WROOM/dp/B0CWGJN1GQ', note: '2-pack available' },
+  { name: 'USB-C to USB-A OTG adapter', price: '~$5', link: 'https://www.amazon.com/gp/product/B07BS8SRWH', note: 'JSAUX 2-pack' },
+  { name: 'USB-A to USB-B cable', price: '~$5', link: null, note: 'Standard printer cable' },
+  { name: 'USB-C to USB-C cable', price: '~$8', link: null, note: 'For powering ESP32 from iPhone' },
+];
+
+const steps = [
+  {
+    title: 'Solder the USB-OTG Jumper',
+    content: `On the back of the YD-ESP32-S3 board, locate the solder pads labeled "USB-OTG". Use a soldering iron to bridge these pads together. This connects VBUS between the two USB-C ports, allowing the ESP32 to power the gas analyzer.`,
+  },
+  {
+    title: 'Install PlatformIO',
+    content: `Install VS Code from code.visualstudio.com, then install the PlatformIO extension from the VS Code marketplace. This provides the toolchain needed to compile and upload the firmware.`,
+  },
+  {
+    title: 'Flash the Firmware',
+    content: `Clone the GasTag firmware repository. Open the ESP32Firmware folder in VS Code. Connect the ESP32 to your computer via the UART USB-C port (not the OTG port). Click the PlatformIO Upload button or run: pio run -t upload`,
+  },
+  {
+    title: 'Connect the Hardware',
+    content: `Connect your setup: iPhone → USB-C cable → ESP32 UART port (for power). ESP32 OTG port → USB-C to USB-A adapter → USB-A to USB-B cable → DiveSoft Analyzer USB port.`,
+  },
+  {
+    title: 'Test the Connection',
+    content: `Install the nRF Connect app on your phone. Scan for BLE devices and verify you see "GasTag Bridge" advertising. Once verified, download the GasTag app from the App Store to use the full interface.`,
+  },
+];
+
+const troubleshooting = [
+  { problem: 'No USB device detected', solution: 'Check wiring, ensure D+/D- aren\'t swapped' },
+  { problem: 'Upload fails', solution: 'Use the UART USB-C port, not the OTG port' },
+  { problem: 'Crashes on boot', solution: 'Ensure USB CDC On Boot is disabled in Arduino IDE settings' },
+  { problem: 'BLE not advertising', solution: 'Check serial monitor (115200 baud) for error messages' },
+  { problem: 'Can\'t find device on iPhone', solution: 'Ensure ESP32 is powered and Bluetooth is enabled on iPhone' },
+];
+---
+
+<Layout title="DIY Guide" description="Build your own GasTag bridge for about $25 in parts.">
+  <Navigation />
+
+  <main class="pt-16">
+    <!-- Header -->
+    <section class="bg-gradient-to-b from-gray-50 to-white py-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Build Your Own GasTag Bridge</h1>
+        <p class="text-xl text-gray-600">Total cost: approximately $25 in parts</p>
+      </div>
+    </section>
+
+    <!-- Parts List -->
+    <section class="py-16 bg-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeading title="Parts List" centered={false} />
+
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead>
+              <tr class="border-b border-gray-200">
+                <th class="text-left py-3 font-semibold text-gray-900">Part</th>
+                <th class="text-left py-3 font-semibold text-gray-900">Price</th>
+                <th class="text-left py-3 font-semibold text-gray-900">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              {parts.map((part) => (
+                <tr class="border-b border-gray-100">
+                  <td class="py-4">
+                    {part.link ? (
+                      <a href={part.link} target="_blank" rel="noopener" class="text-accent hover:underline">
+                        {part.name}
+                      </a>
+                    ) : (
+                      <span class="text-gray-900">{part.name}</span>
+                    )}
+                  </td>
+                  <td class="py-4 text-gray-600">{part.price}</td>
+                  <td class="py-4 text-gray-500 text-sm">{part.note}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-6 p-4 bg-primary/5 rounded-lg">
+          <p class="text-sm text-gray-700">
+            <strong>How to identify the correct ESP32 board:</strong> Look for dual USB-C ports, 4 LEDs in a row (RGB, Power, TX, RX), and solder pads on the back labeled "USB-OTG".
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Build Steps -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeading title="Build Steps" centered={false} />
+
+        <div class="space-y-8">
+          {steps.map((step, index) => (
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">
+                  {index + 1}
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold text-gray-900 mb-2">{step.title}</h3>
+                  <p class="text-gray-600 leading-relaxed">{step.content}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Wiring Diagram -->
+    <section class="py-16 bg-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeading title="Connection Diagram" centered={false} />
+
+        <div class="bg-gray-50 rounded-xl p-8 font-mono text-sm">
+          <pre class="overflow-x-auto text-gray-700">
+{`┌─────────────────┐      USB-B       ┌─────────────────┐       BLE        ┌─────────────────┐
+│  DiveSoft       │ ──────────────►  │   ESP32-S3      │  ~~~~~~~~~~~~►   │    iPhone       │
+│  Analyzer H2/O2 │    Serial Data   │   GasTag Bridge │   Notifications  │   GasTag App    │
+└─────────────────┘                  └─────────────────┘                  └─────────────────┘
+                                            ▲
+                                            │  USB-C Power
+                                            │  (from iPhone)
+                                            │`}
+          </pre>
+        </div>
+
+        <div class="mt-8">
+          <img
+            src="/images/label_hardware.jpg"
+            alt="GasTag hardware setup"
+            class="rounded-xl shadow-lg max-w-full"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Troubleshooting -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeading title="Troubleshooting" centered={false} />
+
+        <div class="space-y-4">
+          {troubleshooting.map((item) => (
+            <div class="bg-white rounded-lg p-4 border border-gray-100">
+              <p class="font-medium text-gray-900 mb-1">{item.problem}</p>
+              <p class="text-gray-600 text-sm">{item.solution}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
