@@ -16,16 +16,17 @@ const steps = [
 ];
 
 const features = [
-  { title: 'Print tank labels', description: 'One tap to print gas mix labels for your tanks with MOD calculations.', icon: '🏷️' },
+  { title: 'Print or share labels', description: 'Print gas mix labels or share them as images — no printer required.', icon: '🏷️' },
   { title: 'Real-time readings', description: 'See gas mix data instantly on your iPhone as you analyze.', icon: '📊' },
   { title: 'Fully wireless', description: 'Bluetooth from analyzer to phone to printer. No cables to your phone.', icon: '📡' },
   { title: 'iPhone powered', description: 'Bridge runs off your iPhone\'s USB-C port. No extra batteries needed.', icon: '🔋' },
   { title: 'Background mode', description: 'App stays connected while you use other apps on your phone.', icon: '⚡' },
   { title: 'Auto-reconnect', description: 'Automatically reconnects if the Bluetooth connection drops.', icon: '🔄' },
+  { title: 'Local history', description: 'All your gas readings are stored locally on your device for easy reference.', icon: '📋' },
 ];
 
 const requirements = [
-  { item: 'DiveSoft Analyzer H2/O2', note: 'Required — this is what GasTag reads', required: true },
+  { item: 'DiveSoft Analyzer H2/O2', note: 'Required — this is where GasTag get the Gas contents', required: true },
   { item: 'Brother QL-820NWB label printer + DK-2251 labels', note: 'For printing tank labels', required: false },
   { item: 'iPhone 15 or later', note: 'Or any iPhone with a USB power bank', required: false },
   { item: 'GasTag Bridge', note: 'Build it yourself (~$25) or get pre-built', required: false },
@@ -51,9 +52,9 @@ const requirements = [
 
             <!-- Requirements Callout -->
             <div class="bg-warning/10 border border-warning/30 rounded-lg px-4 py-3 mb-8">
-              <p class="text-warning font-medium flex items-center gap-2">
-                <span>⚠️</span>
-                <span>Requires DiveSoft Analyzer H2/O2 + GasTag Bluetooth Bridge</span>
+              <p class="text-warning font-medium flex flex-col gap-1">
+                <span>⚠️ Requires DiveSoft Analyzer H2/O2</span>
+                <span>⚠️ Requires GasTag Bluetooth Bridge (<a href={`${base}diy-guide`} class="underline hover:text-warning/80">DIY</a> or <a href={`${base}get-one`} class="underline hover:text-warning/80">Pre-Built</a>)</span>
               </p>
             </div>
 
@@ -114,6 +115,15 @@ const requirements = [
               icon={feature.icon}
             />
           ))}
+        </div>
+
+        <!-- History Screenshot -->
+        <div class="mt-12 flex justify-center">
+          <img
+            src={`${base}images/gas_log_history.png`}
+            alt="GasTag gas log history screen"
+            class="w-72 rounded-3xl shadow-2xl"
+          />
         </div>
       </div>
     </section>

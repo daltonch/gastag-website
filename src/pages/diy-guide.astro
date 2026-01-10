@@ -11,20 +11,17 @@ const parts = [
   { name: 'USB-C to USB-A OTG adapter', price: '~$5', link: 'https://www.amazon.com/gp/product/B07BS8SRWH', note: 'JSAUX 2-pack' },
   { name: 'USB-A to USB-B cable', price: '~$5', link: null, note: 'The one included with your Analyzer works great' },
   { name: 'USB-C to USB-C cable', price: '~$8', link: null, note: 'For powering ESP32 from iPhone' },
+  { name: '3D Printed Case (optional)', price: 'Free', link: null, note: 'STL files available below' },
 ];
 
 const steps = [
-  {
-    title: 'Solder the USB-OTG Jumper',
-    content: `On the back of the YD-ESP32-S3 board, locate the solder pads labeled "USB-OTG". Use a soldering iron to bridge these pads together. This connects VBUS between the two USB-C ports, allowing the ESP32 to power the gas analyzer.`,
-  },
   {
     title: 'Install PlatformIO',
     content: `Install VS Code from code.visualstudio.com, then install the PlatformIO extension from the VS Code marketplace. This provides the toolchain needed to compile and upload the firmware.`,
   },
   {
     title: 'Flash the Firmware',
-    content: `Clone the GasTag firmware repository. Open the ESP32Firmware folder in VS Code. Connect the ESP32 to your computer via the UART USB-C port (not the OTG port). Click the PlatformIO Upload button or run: pio run -t upload`,
+    content: `Clone the <a href="https://github.com/daltonch/GasTag/tree/master" target="_blank" rel="noopener" class="text-accent hover:underline">GasTag firmware repository</a>. Open the ESP32Firmware folder in VS Code. Connect the ESP32 to your computer via the UART USB-C port (not the OTG port). Click the PlatformIO Upload button or run: pio run -t upload. Once the initial firmware is flashed, the GasTag iOS app can keep the firmware updated via OTA updates.`,
   },
   {
     title: 'Connect the Hardware',
@@ -34,10 +31,13 @@ const steps = [
     title: 'Test the Connection',
     content: `Install the nRF Connect app on your phone. Scan for BLE devices and verify you see "GasTag Bridge" advertising. Once verified, download the GasTag app from the App Store to use the full interface.`,
   },
+  {
+    title: 'Keep firmware updated',
+    content: `From time to time the GasTag bridge firmware may need to be updated. You can do this manually as before or via the iOS app via OTA firmware updats`,
+  },
 ];
 
 const troubleshooting = [
-  { problem: 'No USB device detected', solution: 'Check wiring, ensure D+/D- aren\'t swapped' },
   { problem: 'Upload fails', solution: 'Use the UART USB-C port, not the OTG port' },
   { problem: 'Crashes on boot', solution: 'Ensure USB CDC On Boot is disabled in Arduino IDE settings' },
   { problem: 'BLE not advertising', solution: 'Check serial monitor (115200 baud) for error messages' },
@@ -113,7 +113,7 @@ const troubleshooting = [
                 </div>
                 <div>
                   <h3 class="text-lg font-semibold text-gray-900 mb-2">{step.title}</h3>
-                  <p class="text-gray-600 leading-relaxed">{step.content}</p>
+                  <p class="text-gray-600 leading-relaxed" set:html={step.content} />
                 </div>
               </div>
             </div>
