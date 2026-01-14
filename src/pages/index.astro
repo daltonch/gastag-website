@@ -30,7 +30,7 @@ const requirements = [
   { item: 'Brother QL-820NWB label printer + DK-2251 labels', note: 'For printing tank labels', required: false },
   { item: 'iPhone 15 or later', note: 'Or any iPhone with a USB power bank', required: false },
   { item: 'GasTag Bridge', note: 'Build it yourself (~$25) or get pre-built', required: false },
-  { item: 'GasTag iOS App', note: 'Available on the App Store', required: false },
+  { item: 'GasTag iOS App', note: 'Available on the <a href="https://apps.apple.com/us/app/gastag/id6757646672" class="underline hover:text-accent">App Store</a>', required: false },
 ];
 ---
 
@@ -145,7 +145,7 @@ const requirements = [
                 </span>
                 <div>
                   <span class="font-medium text-gray-900">{req.item}</span>
-                  <span class="text-gray-500 text-sm ml-2">— {req.note}</span>
+                  <span class="text-gray-500 text-sm ml-2" set:html={`— ${req.note}`}></span>
                 </div>
               </li>
             ))}
