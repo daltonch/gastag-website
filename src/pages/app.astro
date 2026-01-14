@@ -18,7 +18,7 @@ const features = [
 ];
 
 const printerSteps = [
-  'Turn on your Brother QL-820NWB printer',
+  'Turn on your <a href="https://amzn.to/4pGFRxT">Brother QL-820NWB</a> printer',
   'On the printer, hold the Bluetooth button until the light blinks',
   'On your iPhone, go to Settings → Bluetooth',
   'Find and pair with "QL-820NWB"',
@@ -99,7 +99,7 @@ const printerSteps = [
         <div class="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
           <h3 class="font-semibold text-gray-900 mb-4">Required Printer</h3>
           <p class="text-gray-600 mb-6">
-            GasTag works with the <strong>Brother QL-820NWB</strong> label printer using <strong>DK-2251</strong> continuous length labels (red/black on white).
+            GasTag works with the <strong><a href="https://amzn.to/4pGFRxT" class="underline hover:text-primary">Brother QL-820NWB</a></strong> label printer using <strong><a href="https://amzn.to/3NjMTLC" class="underline hover:text-primary">DK-2251</a></strong> continuous length labels (red/black on white).
           </p>
 
           <h3 class="font-semibold text-gray-900 mb-4">Pairing Steps</h3>
@@ -109,7 +109,7 @@ const printerSteps = [
                 <span class="w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center text-sm font-medium flex-shrink-0">
                   {index + 1}
                 </span>
-                <span class="text-gray-600">{step}</span>
+                <span class="text-gray-600" set:html={step}></span>
               </li>
             ))}
           </ol>

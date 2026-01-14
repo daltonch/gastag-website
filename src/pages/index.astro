@@ -12,7 +12,7 @@ const steps = [
   { number: '1', title: 'Connect', description: 'ESP32 bridge plugs into your DiveSoft Analyzer\'s USB port', icon: '🔌' },
   { number: '2', title: 'Pair', description: 'iPhone connects to the bridge via Bluetooth', icon: '📱' },
   { number: '3', title: 'Read', description: 'Live He, O₂, temperature, and pressure readings on your phone', icon: '📊' },
-  { number: '4', title: 'Print', description: 'Print a tank label directly to your Brother QL-820NWB via Bluetooth', icon: '🏷️' },
+  { number: '4', title: 'Print', description: 'Print a tank label directly to your <a href="https://amzn.to/4pGFRxT" class="underline hover:text-primary">Brother QL-820NWB</a> via Bluetooth', icon: '🏷️' },
 ];
 
 const features = [
@@ -27,7 +27,7 @@ const features = [
 
 const requirements = [
   { item: 'DiveSoft Analyzer H2/O2', note: 'Required — this is where GasTag get the Gas contents', required: true },
-  { item: 'Brother QL-820NWB label printer + DK-2251 labels', note: 'For printing tank labels', required: false },
+  { item: '<a href="https://amzn.to/4pGFRxT" class="underline hover:text-primary">Brother QL-820NWB</a> label printer + <a href="https://amzn.to/3NjMTLC" class="underline hover:text-primary">DK-2251</a> labels', note: 'For printing tank labels', required: false },
   { item: 'iPhone 15 or later', note: 'Or any iPhone with a USB power bank', required: false },
   { item: 'GasTag Bridge', note: 'Build it yourself (~$25) or get pre-built', required: false },
   { item: 'GasTag iOS App', note: 'Available on the <a href="https://apps.apple.com/us/app/gastag/id6757646672" class="underline hover:text-accent">App Store</a>', required: false },
@@ -92,7 +92,7 @@ const requirements = [
               </div>
               <div class="text-sm font-medium text-primary mb-2">Step {step.number}</div>
               <h3 class="text-lg font-semibold text-gray-900 mb-2">{step.title}</h3>
-              <p class="text-gray-600 text-sm">{step.description}</p>
+              <p class="text-gray-600 text-sm" set:html={step.description}></p>
             </div>
           ))}
         </div>
@@ -144,7 +144,7 @@ const requirements = [
                   {req.required ? '⚠️' : '✓'}
                 </span>
                 <div>
-                  <span class="font-medium text-gray-900">{req.item}</span>
+                  <span class="font-medium text-gray-900" set:html={req.item}></span>
                   <span class="text-gray-500 text-sm ml-2" set:html={`— ${req.note}`}></span>
                 </div>
               </li>
