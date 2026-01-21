@@ -48,6 +48,9 @@ const requirements = [
             </h1>
             <p class="text-xl text-gray-600 mb-6">
               Read your DiveSoft Analyzer wirelessly and print professional tank labels in seconds.
+              One of the biggest issues technical divers face is breathing the wrong gas at depth.
+              Tanks should always be analyzed and labeled. While tape and a magic marker have worked
+              there are better ways. GasTag + Label Printer is that way!
             </p>
 
             <!-- Requirements Callout -->
@@ -104,7 +107,7 @@ const requirements = [
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col items-center">
           <img
-            src={`${base}images/layout.png`}
+            src={`${base}images/layout.jpg`}
             alt="GasTag system layout showing Analyzer, Bridge, Phone and Printer connections"
             class="max-w-full rounded-xl shadow-lg"
           />
@@ -133,13 +136,40 @@ const requirements = [
           ))}
         </div>
 
-        <!-- History Screenshot -->
-        <div class="mt-12 flex justify-center">
-          <img
-            src={`${base}images/gas_log_history.png`}
-            alt="GasTag gas log history screen"
-            class="w-72 rounded-3xl shadow-2xl"
-          />
+        <!-- Feature Screenshots -->
+        <div class="mt-12 flex flex-wrap justify-center gap-8">
+          <div class="text-center">
+            <img
+              src={`${base}images/labels.jpg`}
+              alt="GasTag printed tank labels"
+              class="w-72 rounded-3xl shadow-2xl"
+            />
+            <p class="mt-4 text-gray-600 text-sm">Print or share labels</p>
+          </div>
+          <div class="text-center">
+            <img
+              src={`${base}images/label-on-tank.jpg`}
+              alt="GasTag label applied to scuba tank"
+              class="w-72 rounded-3xl shadow-2xl"
+            />
+            <p class="mt-4 text-gray-600 text-sm">Label on tank</p>
+          </div>
+          <div class="text-center">
+            <img
+              src={`${base}images/label-on-valve.jpg`}
+              alt="GasTag label applied to tank valve"
+              class="w-72 rounded-3xl shadow-2xl"
+            />
+            <p class="mt-4 text-gray-600 text-sm">Label on valve (optional)</p>
+          </div>
+          <div class="text-center">
+            <img
+              src={`${base}images/gas_log_history.png`}
+              alt="GasTag gas log history screen"
+              class="w-72 rounded-3xl shadow-2xl"
+            />
+            <p class="mt-4 text-gray-600 text-sm">Local history</p>
+          </div>
         </div>
       </div>
     </section>
