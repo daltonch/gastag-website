@@ -10,7 +10,7 @@ const base = import.meta.env.BASE_URL;
 const features = [
   { title: 'Live Gas Readings', description: 'See Helium, Oxygen, temperature, and pressure in real-time as you analyze.', icon: '📊' },
   { title: 'MOD Calculation', description: 'Automatic Maximum Operating Depth calculation at user selectable PPO₂.', icon: '🎯' },
-  { title: 'Label Preview', description: 'See exactly what your printed label will look like before printing, with the option to include a narrow lable with just the analysis for placing on top of the valve.', icon: '👁️' },
+  { title: 'Label Preview', description: 'See exactly what your printed label will look like before printing, with the option to include a narrow label with just the analysis for placing on top of the valve.', icon: '👁️' },
   { title: 'One-Tap Printing', description: 'Print professional, color tank labels wirelessly to your Brother printer.', icon: '🏷️' },
   { title: 'Label Sharing', description: 'No printer? No Problem! You can still save history of your analysis in the app log or save an image to your files.', icon: '💾' },
   { title: 'Mix Notation', description: 'Standard gas mix notation (e.g., 16/40) calculated automatically.', icon: '🔢' },
@@ -99,7 +99,21 @@ const printerSteps = [
         <div class="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
           <h3 class="font-semibold text-gray-900 mb-4">Required Printer</h3>
           <p class="text-gray-600 mb-6">
-            GasTag works with the <strong><a href="https://amzn.to/4pGFRxT" class="underline hover:text-primary">Brother QL-820NWB</a></strong> label printer using <strong><a href="https://amzn.to/3NjMTLC" class="underline hover:text-primary">DK-2251</a></strong> continuous length labels (red/black on white).
+            GasTag works with the
+            <strong>
+              <a href="https://amzn.to/4pGFRxT" class="underline hover:text-primary">Brother QL-820NWB</a>
+            </strong>
+            label printer using
+            <strong>
+              <a href="https://amzn.to/3NjMTLC" class="underline hover:text-primary">DK-2251</a>
+            </strong>
+            continuous length labels (red/black on white) or for longer lasting labels in the water we recommend
+            <strong>
+              <a href="https://amzn.to/3M6o1GJ" class="underline hover:text-primary">DK-2212</a>
+            </strong>
+            continuous length labels (black and white only).
+            The DK2251's will last for a few dives but are available in red/black on white while the DK-2212's last
+            longer, they are great for stage or bailout bottles but only available in black and white.
           </p>
 
           <h3 class="font-semibold text-gray-900 mb-4">Pairing Steps</h3>
