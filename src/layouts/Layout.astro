@@ -21,6 +21,14 @@ const { title, description = 'Wireless gas readings on your iPhone. Works with D
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <title>{title} | GasTag</title>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TERW69SCQ8"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-TERW69SCQ8');
+    </script>
   </head>
   <body class="min-h-screen flex flex-col">
     <slot />
